@@ -5,6 +5,9 @@
 - 作成した VPC の情報
   ![vpc](image/vpc.png)
 
+- VPC 内のサブネットのサブネット ID
+  ![alt text](image/subnet.png)
+
 ### EC2 の作成
 
 - 作成した EC2 の情報
@@ -19,7 +22,7 @@
 ### RDS の作成
 
 - 作成した RDS の情報
-  ![rds](image/rds.png)
+  ![rds_new](image/rds_new.png)
 
 - RDS のセキュリティーグループ情報
 
@@ -30,4 +33,4 @@
 
 ### EC ２から RDS への接続
 
-![connect_rds](image/connect_rds.png)
+![connect_rds_new](image/connect_rds_new.png)
