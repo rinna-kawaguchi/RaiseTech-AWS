@@ -16,8 +16,9 @@
 
 ![app_alb](image/app_alb.png)
 
-### S3 追加
+### S3 追加（サンプルアプリケーションで登録する画像の保存先を S3 に変更）
 
+![alt text](image/app_s3.png)
 ![s3_list](image/s3_list.png)
 ![s3_image](image/s3_image.png)
 
