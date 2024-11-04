@@ -17,6 +17,7 @@ Parameters:
     MaxLength: 16
     MinLength: 1
   DBMasterUserPassword:
+    NoEcho: true
     Type: String
     MaxLength: 41
     MinLength: 8
