@@ -39,4 +39,4 @@ Outputs:
   CfnS3AccessRole:
     Value: !Ref CfnS3AccessRole
     Export:
-      Name: CfnS3AccessRole
+      Name: CfnS3AccessRole-role-name

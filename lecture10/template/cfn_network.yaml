@@ -141,20 +141,20 @@ Outputs:
   CfnVPC:
     Value: !Ref CfnVPC
     Export:
-      Name: CfnVPC
+      Name: CfnVPC-ID
   CfnPublicSubnet1A:
     Value: !Ref CfnPublicSubnet1A
     Export:
-      Name: CfnPublicSubnet1A
+      Name: CfnPublicSubnet1A-ID
   CfnPublicSubnet1C:
     Value: !Ref CfnPublicSubnet1C
     Export:
-      Name: CfnPublicSubnet1C
+      Name: CfnPublicSubnet1C-ID
   CfnPrivateSubnet1A:
     Value: !Ref CfnPrivateSubnet1A
     Export:
-      Name: CfnPrivateSubnet1A
+      Name: CfnPrivateSubnet1A-ID
   CfnPrivateSubnet1C:
     Value: !Ref CfnPrivateSubnet1C
     Export:
-      Name: CfnPrivateSubnet1C
+      Name: CfnPrivateSubnet1C-ID
