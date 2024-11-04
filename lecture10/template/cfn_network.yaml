@@ -1,9 +1,11 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: create VPC
+
 Parameters:
   PJName:
     Type: String
     Default: "aws-lecture10"
+
   TagKey:
     Description: key for cost allocation tags
     Type: String
@@ -34,6 +36,7 @@ Resources:
           Value: !Sub "${PJName}-igw"
         - Key: !Ref TagKey
           Value: !Ref PJName
+
   CfnInternetGatewayAttachment:
     Type: AWS::EC2::VPCGatewayAttachment
     Properties:
@@ -54,6 +57,7 @@ Resources:
           Value: !Sub "${PJName}-public-subnet-1a"
         - Key: !Ref TagKey
           Value: !Ref PJName
+
   CfnPublicSubnet1C:
     Type: AWS::EC2::Subnet
     Properties:
@@ -65,6 +69,7 @@ Resources:
           Value: !Sub "${PJName}-public-subnet-1c"
         - Key: !Ref TagKey
           Value: !Ref PJName
+
   CfnPrivateSubnet1A:
     Type: AWS::EC2::Subnet
     Properties:
@@ -76,6 +81,7 @@ Resources:
           Value: !Sub "${PJName}-private-subnet-1a"
         - Key: !Ref TagKey
           Value: !Ref PJName
+
   CfnPrivateSubnet1C:
     Type: AWS::EC2::Subnet
     Properties:
@@ -100,6 +106,7 @@ Resources:
           Value: !Sub "${PJName}-public-route-table"
         - Key: !Ref TagKey
           Value: !Ref PJName
+
   CfnPrivateRouteTable:
     Type: AWS::EC2::RouteTable
     Properties:
@@ -122,16 +129,19 @@ Resources:
     Properties:
       SubnetId: !Ref CfnPublicSubnet1A
       RouteTableId: !Ref CfnPublicRouteTable
+
   CfnPublicSubnetRouteTableAssociation1C:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       SubnetId: !Ref CfnPublicSubnet1C
       RouteTableId: !Ref CfnPublicRouteTable
+
   CfnPrivateSubnetRouteTableAssociation1A:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
       SubnetId: !Ref CfnPrivateSubnet1A
       RouteTableId: !Ref CfnPrivateRouteTable
+
   CfnPrivateSubnetRouteTableAssociation1C:
     Type: AWS::EC2::SubnetRouteTableAssociation
     Properties:
@@ -146,18 +156,22 @@ Outputs:
     Value: !Ref CfnVPC
     Export:
       Name: CfnVPC-ID
+
   CfnPublicSubnet1A:
     Value: !Ref CfnPublicSubnet1A
     Export:
       Name: CfnPublicSubnet1A-ID
+
   CfnPublicSubnet1C:
     Value: !Ref CfnPublicSubnet1C
     Export:
       Name: CfnPublicSubnet1C-ID
+
   CfnPrivateSubnet1A:
     Value: !Ref CfnPrivateSubnet1A
     Export:
       Name: CfnPrivateSubnet1A-ID
+
   CfnPrivateSubnet1C:
     Value: !Ref CfnPrivateSubnet1C
     Export:

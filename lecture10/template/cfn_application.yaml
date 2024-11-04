@@ -1,26 +1,32 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: create EC2, RDS, ALB, S3
+
 Parameters:
   PJName:
     Type: String
     Default: "aws-lecture10"
+
   KeyName:
     Description: The EC2 Key Pair to allow SSH access to the instance
     Type: "AWS::EC2::KeyPair::KeyName"
+
   MyIP:
     Description: IP address allowed to access EC2
     Type: String
     Default: "0.0.0.0/0"
+
   DBMasterUsername:
     Type: String
     AllowedPattern: ^[a-zA-Z0-9]*$
     MaxLength: 16
     MinLength: 1
+
   DBMasterUserPassword:
     NoEcho: true
     Type: String
     MaxLength: 41
     MinLength: 8
+
   TagKey:
     Description: key for cost allocation tags
     Type: String
