@@ -22,6 +22,10 @@ Resources:
           Value: !Sub "${PJName}-vpc"
         - Key: !Ref TagKey
           Value: !Ref PJName
+
+  # ------------------------------------------------------------#
+  #  InternetGateway
+  # ------------------------------------------------------------#
   CfnInternetGateway:
     Type: AWS::EC2::InternetGateway
     Properties:
@@ -37,7 +41,7 @@ Resources:
       VpcId: !Ref CfnVPC
 
   # ------------------------------------------------------------#
-  #  Public Subnet
+  #  Subnet
   # ------------------------------------------------------------#
   CfnPublicSubnet1A:
     Type: AWS::EC2::Subnet
@@ -135,7 +139,7 @@ Resources:
       RouteTableId: !Ref CfnPrivateRouteTable
 
 # ------------------------------------------------------------#
-# Outputs
+#  Outputs
 # ------------------------------------------------------------#
 Outputs:
   CfnVPC:

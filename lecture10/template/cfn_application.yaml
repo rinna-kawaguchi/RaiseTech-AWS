@@ -28,7 +28,7 @@ Parameters:
 
 Resources:
   # ------------------------------------------------------------#
-  # InstanceProfile
+  #  InstanceProfile
   # ------------------------------------------------------------#
   CfnS3AccessInstanceProfile:
     Type: AWS::IAM::InstanceProfile
@@ -38,7 +38,7 @@ Resources:
         - !ImportValue CfnS3AccessRole-role-name
 
   # ------------------------------------------------------------#
-  #  SecurityGroup for EC2
+  #  SecurityGroup(for EC2)
   # ------------------------------------------------------------#
   CfnEC2SecGrp:
     Type: AWS::EC2::SecurityGroup
@@ -64,7 +64,7 @@ Resources:
           Value: !Ref PJName
 
   # ------------------------------------------------------------#
-  #  EC2
+  #  EC2 Instance
   # ------------------------------------------------------------#
   CfnEC2:
     Type: AWS::EC2::Instance
@@ -112,7 +112,7 @@ Resources:
           Value: !Ref PJName
 
   # ------------------------------------------------------------#
-  #  SecurityGroup for RDS
+  #  SecurityGroup(for RDS)
   # ------------------------------------------------------------#
   CfnRDSSecGrp:
     Type: AWS::EC2::SecurityGroup
@@ -129,9 +129,9 @@ Resources:
         - Key: !Ref TagKey
           Value: !Ref PJName
 
-  #-----------------------------------
-  # SubnetGroup
-  #-----------------------------------
+  # ------------------------------------------------------------#
+  #  DBSubnetGroup
+  # ------------------------------------------------------------#
   CfnRDSSubnetGroup:
     Type: "AWS::RDS::DBSubnetGroup"
     Properties:
@@ -144,9 +144,9 @@ Resources:
         - Key: !Ref TagKey
           Value: !Ref PJName
 
-  #-----------------------------------
-  # RDS
-  #-----------------------------------
+  # ------------------------------------------------------------#
+  #  RDS DBInstance
+  # ------------------------------------------------------------#
   CfnRDSInstance:
     Type: "AWS::RDS::DBInstance"
     Properties:
@@ -172,7 +172,7 @@ Resources:
           Value: !Ref PJName
 
   # ------------------------------------------------------------#
-  #  SecurityGroup for ALB
+  #  SecurityGroup(for ALB)
   # ------------------------------------------------------------#
   CfnALBSecGrp:
     Type: "AWS::EC2::SecurityGroup"
@@ -215,7 +215,7 @@ Resources:
           Value: !Ref PJName
 
   # ------------------------------------------------------------#
-  #  ALB
+  #  LoadBalancer
   # ------------------------------------------------------------#
   CfnALB:
     Type: "AWS::ElasticLoadBalancingV2::LoadBalancer"
@@ -232,6 +232,10 @@ Resources:
       Tags:
         - Key: !Ref TagKey
           Value: !Ref PJName
+
+  # ------------------------------------------------------------#
+  #  Listener
+  # ------------------------------------------------------------#
   CfnALBListener:
     Type: "AWS::ElasticLoadBalancingV2::Listener"
     Properties:
@@ -243,7 +247,7 @@ Resources:
       Protocol: HTTP
 
   # ------------------------------------------------------------#
-  #  S3
+  #  S3 Bucket
   # ------------------------------------------------------------#
   CfnS3Bucket:
     Type: AWS::S3::Bucket
