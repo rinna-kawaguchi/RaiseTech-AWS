@@ -172,7 +172,9 @@ Resources:
       CopyTagsToSnapshot: true
       BackupRetentionPeriod: 0
       DBSubnetGroupName: !Ref CfnRDSSubnetGroup
-      AvailabilityZone: ap-northeast-1a
+      AvailabilityZone: !Select
+        - 0
+        - Fn::GetAZs: !Ref AWS::Region
       Tags:
         - Key: !Ref TagKey
           Value: !Ref PJName
