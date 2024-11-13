@@ -15,18 +15,6 @@ Parameters:
     Type: String
     Default: "0.0.0.0/0"
 
-  DBMasterUsername:
-    Type: String
-    AllowedPattern: ^[a-zA-Z0-9]*$
-    MaxLength: 16
-    MinLength: 1
-
-  DBMasterUserPassword:
-    NoEcho: true
-    Type: String
-    MaxLength: 41
-    MinLength: 8
-
   TagKey:
     Description: key for cost allocation tags
     Type: String
@@ -151,6 +139,23 @@ Resources:
           Value: !Ref PJName
 
   # ------------------------------------------------------------#
+  #  Secret (for RDS password)
+  # ------------------------------------------------------------#
+  CfnRDSSecret:
+    Type: "AWS::SecretsManager::Secret"
+    Properties:
+      Name: "RDSSecret"
+      Description: "RDS password for my RDS instance"
+      GenerateSecretString:
+        SecretStringTemplate: '{"username": "root"}'
+        GenerateStringKey: "password"
+        PasswordLength: 32
+        ExcludeCharacters: '"@/\'
+      Tags:
+        - Key: !Ref TagKey
+          Value: !Ref PJName
+
+  # ------------------------------------------------------------#
   #  RDS DBInstance
   # ------------------------------------------------------------#
   CfnRDSInstance:
@@ -162,8 +167,8 @@ Resources:
       DBInstanceClass: db.t3.micro
       AllocatedStorage: "20"
       StorageType: gp2
-      MasterUsername: !Ref DBMasterUsername
-      MasterUserPassword: !Ref DBMasterUserPassword
+      MasterUsername: !Sub "{{resolve:secretsmanager:${CfnRDSSecret}:SecretString:username}}"
+      MasterUserPassword: !Sub "{{resolve:secretsmanager:${CfnRDSSecret}:SecretString:password}}"
       PubliclyAccessible: false
       MultiAZ: false
       AutoMinorVersionUpgrade: false
