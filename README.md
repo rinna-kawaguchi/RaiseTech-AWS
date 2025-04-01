@@ -38,3 +38,6 @@ CircleCI で以下を実行し、[サンプルアプリケーション](https://
 | 14   | AWS 構成図、自動化処理がわかる図、リポジトリの README 作成                                                           | [lecture14/lecture14.md](lecture14/lecture14.md) |
 | 15   | 課題無し                                                                                                             | -                                                |
 | 16   | 課題無し                                                                                                             | -                                                |
+
+各課題は Pull Request で提出しています。  
+[Pull Request 一覧](https://github.com/rinna-kawaguchi/RaiseTech-AWS/pulls?q=is%3Apr+is%3Aclosed)
